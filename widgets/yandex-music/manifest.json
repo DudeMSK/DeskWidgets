@@ -1,0 +1,13 @@
+{
+  "id": "yandex-music",
+  "name": "Яндекс Музыка",
+  "description": "Текущий трек, обложка и управление воспроизведением",
+  "entry": "index.html",
+  "enabledByDefault": true,
+  "permissions": ["media"],
+  "window": { "width": 380, "height": 148, "layer": "desktop", "anchor": "top-right" },
+  "config": {
+    "sourceFilter": "yandex",
+    "fallbackToAny": false
+  }
+}

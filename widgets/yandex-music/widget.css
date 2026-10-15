@@ -1,0 +1,96 @@
+:root {
+  --accent: #ffcc00;
+  --text: #fff;
+  --text-dim: rgba(255, 255, 255, 0.62);
+}
+
+body {
+  padding: 8px; /* запас под тень карточки: окно прозрачное */
+  box-sizing: border-box;
+  font-family: 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  color: var(--text);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(22, 22, 28, 0.86);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+}
+
+/* Размытая обложка как фон карточки */
+.backdrop {
+  position: absolute;
+  inset: -30px;
+  background: center / cover no-repeat;
+  filter: blur(28px) saturate(1.4);
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.card[data-state="playing"] .backdrop,
+.card[data-state="paused"] .backdrop { opacity: 0.38; }
+
+.cover, .info { position: relative; }
+
+.cover {
+  flex: none;
+  width: 100px;
+  height: 100px;
+  align-self: center;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+.cover img { display: none; width: 100%; height: 100%; object-fit: cover; }
+.cover.has-image img { display: block; }
+.cover.has-image .note { display: none; }
+.note { position: absolute; inset: 30px; width: 40px; height: 40px; fill: none; stroke: var(--text-dim); stroke-width: 1.6; }
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title, .artist { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.title { font-size: 16px; font-weight: 600; line-height: 1.25; }
+.artist { margin-top: 2px; font-size: 13px; color: var(--text-dim); }
+
+.progress { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.bar { flex: 1; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.18); overflow: hidden; }
+.fill { width: 0; height: 100%; border-radius: 2px; background: var(--accent); transition: width 0.3s linear, background 0.6s; }
+
+.controls { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.controls button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, opacity 0.15s;
+}
+.controls button:hover { background: rgba(255, 255, 255, 0.14); }
+.controls button:active { transform: scale(0.92); }
+.controls button:disabled { opacity: 0.3; cursor: default; background: transparent; }
+.controls svg { width: 18px; height: 18px; fill: currentColor; }
+.controls .main { width: 38px; height: 38px; background: var(--accent); color: #111; }
+.controls .main:hover { background: var(--accent); filter: brightness(1.1); }
+.controls .main svg { width: 20px; height: 20px; }
+
+.icon-pause { display: none; }
+.card[data-state="playing"] .icon-play { display: none; }
+.card[data-state="playing"] .icon-pause { display: block; }

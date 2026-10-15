@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Яндекс Музыка</title>
+  <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+  <main class="card" id="card" data-state="idle">
+    <div class="backdrop" id="backdrop"></div>
+
+    <div class="cover">
+      <img id="cover" alt="">
+      <svg class="note" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm10-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+    </div>
+
+    <section class="info">
+      <div class="meta">
+        <div class="title" id="title">Ничего не играет</div>
+        <div class="artist" id="artist">Запустите Яндекс Музыку</div>
+      </div>
+
+      <div class="progress">
+        <span id="pos">0:00</span>
+        <div class="bar"><div class="fill" id="fill"></div></div>
+        <span id="dur">0:00</span>
+      </div>
+
+      <div class="controls">
+        <button id="prev" title="Предыдущий" aria-label="Предыдущий">
+          <svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg>
+        </button>
+        <button id="toggle" class="main" title="Играть / пауза" aria-label="Играть / пауза">
+          <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+        </button>
+        <button id="next" title="Следующий" aria-label="Следующий">
+          <svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5l11 7L4 19z"/></svg>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="widget.js"></script>
+</body>
+</html>

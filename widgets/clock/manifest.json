@@ -1,0 +1,8 @@
+{
+  "id": "clock",
+  "name": "Часы",
+  "description": "Время и дата",
+  "entry": "index.html",
+  "enabledByDefault": false,
+  "window": { "width": 240, "height": 112, "layer": "desktop", "anchor": "top-right" }
+}
